@@ -7,7 +7,8 @@ public class Main {
 
         // Input
         Scanner input = new Scanner(System.in);
-        System.out.println("Text Twist Solver=====");
+        System.out.println("=====Text Twist Solver=====");
+        System.out.println("");
         System.out.print("Masukkan huruf-huruf: ");
         String letters_input = input.nextLine();
         String[] inputs = letters_input.split("[ ,]+");
@@ -20,7 +21,8 @@ public class Main {
         System.out.print("Masukkan pilihan algoritma: ");
         Scanner algo_input = new Scanner(System.in);
         String algo = algo_input.nextLine();
-        System.out.println("Menggunakan algoritma " + algo);
+        System.out.println("");
+        System.out.println("===Menggunakan algoritma " + algo + "===");
 
         // Main handling
         for (int i = 3; i <= inputs.length; i++) {

@@ -18,8 +18,8 @@ public class TextTwist {
         return w.isPrefixValid(word);
     }
 
-    public void recursiveTextTwist(ArrayList<String> let, String word, int depth) {
-        if (depth == 0 && this.w.isWordValid(word)) {
+    public void recursiveTextTwistBT(ArrayList<String> let, String word, int depth) {
+        if (depth == 0 && this.w.isWordValid(word) && !this.result.contains(word)) {
             this.result.add(word);
         }
         if (boundFunction(word)) {
@@ -27,13 +27,27 @@ public class TextTwist {
                 StringBuilder wrd = new StringBuilder(word);
                 ArrayList<String> temp = new ArrayList<>(let);
                 wrd.append(temp.remove(i));
-                recursiveTextTwist(temp, wrd.toString(), depth - 1);
+                // System.out.println(wrd + " == " + (depth));
+                recursiveTextTwistBT(temp, wrd.toString(), depth - 1);
             }
         }
     }
 
-    public void mainTextTwist() {
-        recursiveTextTwist(letters, "", this.length);
+    public void recursiveTextTwistDFS(ArrayList<String> let, String word, int depth) {
+        if (depth == 0 && this.w.isWordValid(word) && !this.result.contains(word)) {
+            this.result.add(word);
+        }
+        for (int i = 0; i < (int) let.size(); i++) {
+            StringBuilder wrd = new StringBuilder(word);
+            ArrayList<String> temp = new ArrayList<>(let);
+            wrd.append(temp.remove(i));
+            // System.out.println(wrd + " == " + (depth));
+            recursiveTextTwistDFS(temp, wrd.toString(), depth - 1);
+        }
+    }
+
+    public void mainTextTwistBT() {
+        recursiveTextTwistBT(letters, "", this.length);
     }
 
     public static void main(String[] args) {
@@ -44,8 +58,10 @@ public class TextTwist {
         letters.add("l");
         letters.add("e");
         letters.add("f");
-        TextTwist t = new TextTwist(5, letters);
-        t.recursiveTextTwist(letters, "", 5);
-        System.out.println(t.result);
+        TextTwist t = new TextTwist(6, letters);
+        final long startTime = System.currentTimeMillis();
+        t.recursiveTextTwistBT(letters, "", 6);
+        final long endTime = System.currentTimeMillis();
+        System.out.println(t.result + " " + (endTime - startTime) + " ms");
     }
 }

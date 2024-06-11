@@ -16,8 +16,8 @@ public class Main {
             letters.add(inputs[i]);
         }
         System.out.println("Pilih Algoritma : ");
-        System.out.println("1. DFS");
-        System.out.println("2. Backtrack (Optimalisasi DFS)");
+        System.out.println("1. IDS");
+        System.out.println("2. Backtrack (Optimalisasi IDS)");
         System.out.print("Masukkan pilihan algoritma: ");
         Scanner algo_input = new Scanner(System.in);
         String algo = algo_input.nextLine();
@@ -30,7 +30,7 @@ public class Main {
             TextTwist t = new TextTwist(i, letters);
             final long startTime = System.currentTimeMillis();
             if (algo.equals("1")) {
-                t.recursiveTextTwistDFS(letters, "", i);
+                t.recursiveTextTwistDLS(letters, "", i);
             } else {
                 t.recursiveTextTwistBT(letters, "", i);
             }

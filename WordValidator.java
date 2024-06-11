@@ -21,7 +21,6 @@ public class WordValidator {
         }
 
         String st;
-        // System.out.println("Initializing..");
         try {
             while ((st = br.readLine()) != null) {
                 if (st.length() == length) {
@@ -31,7 +30,7 @@ public class WordValidator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // System.out.println("Done");
+
     }
 
     public Boolean isPrefixValid(String word) {
@@ -46,12 +45,4 @@ public class WordValidator {
     public Boolean isWordValid(String word) {
         return this.dictionary_map.contains(word);
     }
-
-    // public static void main(String[] args) {
-    // Scanner input_word = new Scanner(System.in);
-    // System.out.print("Masukkan word : ");
-    // String word = input_word.nextLine();
-    // WordValidator w = new WordValidator(word, 3);
-    // System.out.println(w.isPrefixValid(word.toLowerCase()));
-    // }
 }
